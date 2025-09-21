@@ -13,10 +13,6 @@ spec:
         kind: HelmRepository
         name: bitnami
         namespace: flux-system
-      decryption:
-        provider: sops
-        secretRef:
-          name: sops-age-key
   interval: 1m
   values:
     auth:
