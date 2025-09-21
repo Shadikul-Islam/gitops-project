@@ -14,22 +14,23 @@ spec:
         name: bitnami
         namespace: flux-system
   values:
-    existingSecret: wordpress-admin
-    wordpressEmail: admin@example.com
-    wordpressBlogName: "My Blog"
-    mariadb:
-      enabled: false
     externalDatabase:
-      host: mysql.mysql-ns.svc.cluster.local
+      existingSecret: wordpress-db
+      userKey: db-user
+      passwordKey: db-password
+      databaseKey: db-name
+      hostKey: db-host
       port: 3306
-      user: appuser
-      database: wordpress
-      existingSecret: mysql-auth
-      existingSecretPasswordKey: mysql-password
+
+    existingSecret: wordpress-admin
+    existingSecretUsernameKey: wordpress-username
+    existingSecretPasswordKey: wordpress-password
+
     ingress:
       enabled: true
       ingressClassName: nginx
-      hostname: wordpress.local
-      pathType: Prefix
-      annotations: {}
+      hostname: wordpress.example.com
+      pathType: ImplementationSpecific
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
       tls: []
