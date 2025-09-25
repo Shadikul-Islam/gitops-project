@@ -15,12 +15,15 @@ spec:
         namespace: flux-system
   values:
     externalDatabase:
-      existingSecret: wordpress-db
-      userKey: db-user
-      passwordKey: db-password
-      databaseKey: db-name
-      hostKey: db-host
+      existingSecret: mysql-auth   # use MySQL secret directly
+      userKey: username
+      passwordKey: mysql-password
+      databaseKey: database
+      host: mysql                  # ExternalName service in WordPress namespace
       port: 3306
+
+    mariadb:
+      enabled: false               # disable built-in MariaDB
 
     existingSecret: wordpress-admin
     existingSecretUsernameKey: wordpress-username
