@@ -19,7 +19,7 @@ spec:
       userKey: username
       passwordKey: mysql-password
       databaseKey: database
-      host: mysql                  # ExternalName service in WordPress namespace
+      host: mysql.mysql.svc.cluster.local                  # ExternalName service in WordPress namespace
       port: 3306
 
     mariadb:
