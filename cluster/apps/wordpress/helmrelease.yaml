@@ -22,11 +22,13 @@ spec:
       hostKey: db-host
       port: 3306
     mariadb:
-      enabled: false               # disable built-in MariaDB
+      enabled: false
 
     existingSecret: wordpress-admin
     existingSecretUsernameKey: wordpress-username
     existingSecretPasswordKey: wordpress-password
+    extraVolumes: []
+    extraVolumeMounts: [] 
 
     ingress:
       enabled: true
