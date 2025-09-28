@@ -15,10 +15,11 @@ spec:
         namespace: flux-system
   values:
     externalDatabase:
-      host: mysql.mysql.svc.cluster.local
-      user: wp_user
-      password: MyS3cureAppPass
-      database: wordpress
+      existingSecret: wordpress-db
+      userKey: db-user
+      passwordKey: mariadb-password
+      databaseKey: db-name
+      hostKey: db-host
       port: 3306
     mariadb:
       enabled: false
